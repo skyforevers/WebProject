@@ -1,8 +1,9 @@
 {
-  "name": "hyjiin",
+  "name": "ex01",
   "version": "0.0.0",
+  "homepage": "https://github.com/dongseop/mju-class-wp",
   "authors": [
-    "HYJIN <sky64100@naver.com>"
+    "Dongseop Kwon <dongseop@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -13,14 +14,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "~3.3.5",
     "bourbon": "~4.2.5",
     "font-awesome": "fontawesome#~4.4.0",
-    "jquery": "~2.1.4",
-    "lodash": "~3.10.1",
-    "moment": "~2.10.6"
-  },
-  "homepage": "https://github.com/skyforevers/WebProject",
-  "description": "webproject",
-  "main": ""
+    "jquery": "~2.1.4"
+  }
 }
