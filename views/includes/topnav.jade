@@ -9,12 +9,17 @@
       a.navbar-brand(href='/') 
         i.fa.fa-home
     #navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li
-          a(href='/todos') Todo List
-        if (currentUser)
-          li 
-            a(href='/users') Users
+      if(currentUser)
+        ul.nav.navbar-nav
+          li
+            a(href='/posts') Hosting
+          if (currentUser._id == "5843c344431e0c1d2c1cbe06")
+            li 
+              a(href='/users') Users
+      else 
+        ul.nav.navbar-nav
+          li
+            a(href='/posts') Hosting
       ul.nav.navbar-nav.navbar-right
         if (currentUser) 
           li

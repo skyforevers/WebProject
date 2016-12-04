@@ -100,6 +100,7 @@ router.put('/:id', function(req, res, next) {
   });
 });
 
+// 계정 삭제
 router.delete('/:id', function(req, res, next) {
   User.findOneAndRemove({_id: req.params.id}, function(err) {
     if (err) {
@@ -110,6 +111,7 @@ router.delete('/:id', function(req, res, next) {
   });
 });
 
+// 회원 정보를 보는 기능
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
@@ -119,6 +121,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+// 가입
 router.post('/', function(req, res, next) {
   var err = validateForm(req.body, {needPassword: true});
   if (err) {
