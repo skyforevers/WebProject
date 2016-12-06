@@ -10,32 +10,27 @@ block content
     
     form(action = (post.id) ? "/posts/#{post.id}?_method=PUT" : "/posts", method='POST')
       .form-group
-        label(for='email') email
-        .from-control(type='email', id='email', name='title', user.email=post.title)
-      .form-group
         label(for='title') 숙소이름
         input.form-control(type='text', id='title', name='title', placeholder='숙소이름을 적어주세요', value=post.title)
       .form-group
         label(for='content') Content
         textarea.form-control(id='content', rows='10', name='content', placeholder='content here')= post.content
       .form-group
-        label(for='pay') Pay
-        textarea.form-control(type='pay', id='pay', name='pay', placeholder='Pay', value=post.pay)
+        label(for='pay') 가격
+        input.form-control(type='pay', id='pay', name='pay', placeholder='Pay', value=post.pay)
       .form-group
-        label(for='city') City
-        textarea.form-control(type='city', id='city', name='city', placeholder='도시명', value=post.city)
+        label(for='city') 도시
+        input.form-control(type='city', id='city', name='city', placeholder='도시명', value=post.city)
       .form-group
         label(for='address') 주소
-        textarea.form-control(type='address', id='address', name='address', placeholder='주소' value=post.address)
+        input.form-control(type='address', id='address', name='address', placeholder='주소' value=post.address)
       .form-group
-        label(for='infra') Infra
-        textarea.form-control(type='infra', id='infra', name='infra', placeholder='편의시설', value=post.infra)
+        label(for='infra') 편의 시설
+        input.form-control(type='infra', id='infra', name='infra', placeholder='편의시설', value=post.infra)
       .form-group
-        label(for='rule') Rule
-        textarea.form-control(type='rule', rows='5', id='rule', name='rule', placeholder='지켜야 할 사항', value=post.rule)
+        label(for='rule') 기본 사항
+        textarea.form-control(type='rule', rows='5', id='rule', name='rule', placeholder='지켜야 할 사항')= post.rule
       
-      
-
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 

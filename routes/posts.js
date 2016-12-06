@@ -74,13 +74,13 @@ router.put('/:id', function(req, res, next) {
     if (err) {
       return next(err);
     }
-    if (post.password !== req.body.current_password) {
-      req.flash('danger', '비밀번호 틀림');
-    }
-    post.email = req.body.email;
     post.title = req.body.title;
     post.content = req.body.content;
-
+    post.city = req.body.city;
+    post.address = req.body.address;
+    post.rule = req.body.rule;
+    post.infra = req.body.infra;
+    post.rule = req.body.rule;
     post.save(function(err) {
       if (err) {
         return next(err);
@@ -92,19 +92,20 @@ router.put('/:id', function(req, res, next) {
 
 // 게시글을 새로 작성하는 기능
 router.post('/', function(req, res, next) {
-  User.find({}, function(err, user) {
+  User.findOne({}, function(err, user) {
     Post.find({}, function(err, post) {
       if (err) {
         return next(err);
       }
       var newPost = new Post({
-        email: user.email,
+        email: req.user.email,
         title: req.body.title,
         content: req.body.content,
         city: req.body.city,
         address: req.body.address,
         infra: req.body.infra,
-        rule: req.body.rule
+        rule: req.body.rule,
+        pay: req.body.pay
       });
 
       newPost.save(function(err) {

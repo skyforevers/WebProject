@@ -21,10 +21,14 @@ block content
               a(href='/posts/#{post.id}')= post.title
             td= moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')
             td= post.read
-            td
-              a.btn.btn-xs.btn-default(href='/posts/#{post.id}/edit') 수정
-              | 
-              a.btn.btn-xs.btn-default(data-id=post.id, class='delete') 삭제
+            if(currentUser.email == post.email || currentUser.email == "master@airbnb.com")
+              td
+                a.btn.btn-xs.btn-default(href='/posts/#{post.id}/edit') 수정
+                | 
+                a.btn.btn-xs.btn-default(data-id=post.id, class='delete') 삭제
+            else 
+              td
+                a.btn.btn-xs.btn-default(href='/posts/#{post.id}/edit') 예약
 
     a.btn.btn-primary(href='/posts/new') 글쓰기
 
