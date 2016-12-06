@@ -1,6 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
-    User = require('../models/User');
+    User = require('../models/User'); 
 
 module.exports = function(passport) {
   passport.serializeUser(function(user, done) {
@@ -42,7 +42,8 @@ module.exports = function(passport) {
     clientID : '566191836910986',
     clientSecret : '63fa013d5fa1be80a7940a0b769b6960',
     callbackURL : 'http://localhost:3000/auth/facebook/callback',
-    profileFields : ["emails", "displayName", "name", "photos"]
+    profileFields : ["name", "displayName", "emails", "photos", "id"]
+    
   }, function(token, refreshToken, profile, done) {
     console.log(profile);
     var email = profile.emails[0].value;

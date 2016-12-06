@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
   email: {type: String, required: true, index: true, trim: true},
-  password: {type: String},
   title: {type: String, required: true},
   content: {type: String, required: true},
   createdAt: {type: Date, default: Date.now},

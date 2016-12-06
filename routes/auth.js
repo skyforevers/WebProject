@@ -6,7 +6,7 @@ module.exports = function(app, passport) {
   }));
 
   app.get('/auth/facebook',
-    passport.authenticate('facebook', { scope : 'email' })
+    passport.authenticate('facebook', { scope : ['email'] })
   );
 
   app.get('/auth/facebook/callback',
@@ -16,7 +16,7 @@ module.exports = function(app, passport) {
     }),
     function(req, res, next) {
       req.flash('success', '로그인되었습니다.');
-      res.redirect('/todos');
+      res.redirect('/');
     }
   );
 

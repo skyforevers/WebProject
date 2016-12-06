@@ -3,8 +3,17 @@ var express = require('express'),
     User = require('../models/User');
 var router = express.Router();
 
+function needAuth(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash('danger', '로그인이 필요합니다.');
+    res.redirect('/signin');
+  }
+}
+
 // 첫 화면에서 게시판을 누른 뒤 index 페이지를 호출
-router.get('/', function(req, res, next){
+router.get('/', needAuth, function(req, res, next){
   Post.find({}, function(err, posts) {
     if (err) {
       return next(err);
@@ -83,23 +92,28 @@ router.put('/:id', function(req, res, next) {
 
 // 게시글을 새로 작성하는 기능
 router.post('/', function(req, res, next) {
-  Post.find({}, function(err, post) {
-    if (err) {
-      return next(err);
-    }
-    var newPost = new Post({
-      email: req.body.email,
-      title: req.body.title,
-      content: req.body.content,
-    });
-    newPost.password = req.body.password;
-
-    newPost.save(function(err) {
+  User.find({}, function(err, user) {
+    Post.find({}, function(err, post) {
       if (err) {
         return next(err);
-      } else {
-        res.redirect('/posts');
       }
+      var newPost = new Post({
+        email: user.email,
+        title: req.body.title,
+        content: req.body.content,
+        city: req.body.city,
+        address: req.body.address,
+        infra: req.body.infra,
+        rule: req.body.rule
+      });
+
+      newPost.save(function(err) {
+        if (err) {
+          return next(err);
+        } else {
+          res.redirect('/posts');
+        }
+      });
     });
   });
 });

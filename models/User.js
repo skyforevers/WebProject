@@ -17,9 +17,13 @@ schema.methods.generateHash = function(password) {
   var salt = bcrypt.genSaltSync(10);
   return bcrypt.hashSync(password, salt);
 };
-
+              
 schema.methods.validatePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
+};
+
+schema.methods.getPassword = function(password) {
+  return bcrypt.getSalt(password);
 };
 
 var User = mongoose.model('User', schema);

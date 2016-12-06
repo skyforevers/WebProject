@@ -12,23 +12,25 @@
       if(currentUser)
         ul.nav.navbar-nav
           li
-            a(href='/posts') Hosting
+            a(href='/posts') 여행지 보기
           if (currentUser._id == "5843c344431e0c1d2c1cbe06")
             li 
-              a(href='/users') Users
+              a(href='/users') 계정 관리
       else 
         ul.nav.navbar-nav
           li
-            a(href='/posts') Hosting
+            a(href='/posts') 여행지 보기
       ul.nav.navbar-nav.navbar-right
         if (currentUser) 
+          li 
+            a(href='/posts/new') 호스팅하기
           li
-            a(href='/users/#{currentUser._id}') Profile
+            a(href='/users/#{currentUser._id}') 프로필
           li
-            a(href='/signout') Signout
+            a(href='/signout') 로그아웃
         else
           li
-            a(href='/signin') Signin
+            a(href='/signin') 로그인
           li
-            a(href='/users/new') Signup
+            a(href='/users/new') 회원가입
           
