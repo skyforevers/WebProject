@@ -14,40 +14,21 @@ router.get('/bookList', function(req, res, next) {
     });
 });
 
+// 예약 리스트에서 호스팅한 게시글을 보여주는 기능
 router.get('/:id/postshow', function(req, res, next) {
-    Book.findById({_id: req.params.id}, function(err, book) {
-        if (err) {
-            return next(err);
-        }
-        Post.findOne({title: book.title}, function(err, post) {
-            if (err) {
-                return next(err);
-            }
-            res.render('posts/show', {post : post});
-        });
+  Book.findById({_id: req.params.id}, function(err, book) {
+    if (err) {
+      return next(err);
+    }
+  Post.findOne({title: book.title}, function(err, post) {
+    if (err) {
+      return next(err);
+    }
+    res.render('posts/show', {post : post});
     });
-        
-});
-
-// 첫 화면에서 게시판을 누른 뒤 index 페이지를 호출
-router.get('/', function(req, res, next){
-  Post.find({}, function(err, posts) {
-    if (err) {
-      return next(err);
-    }
-    res.render('posts/index', {posts : posts} );
   });
 });
 
-// 글 작성을 누를때 새로 작성하는 edit.jade를 호출
-router.get('/new', function(req, res, next) {
-  Post.find({}, function(err, post) {
-    if (err) {
-      return next(err);
-    }
-    res.render('posts/edit', {post : post});
-  });
-});
 
 // 예약하기를 눌렀을 때 예약기능으로 들어감
 router.get('/:id', function(req, res, next) {
@@ -61,25 +42,7 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-// 게시글 수정을 눌렀을 때 edit 메소드로 연결시켜주는 기능
-router.get('/:id/edit', function(req, res, next) {
-  Post.findById({_id: req.params.id}, function(err, post) {
-    if (err) {
-      return next(err);
-    }
-    res.render('posts/edit', {post : post});
-  });
-});
 
-// 게시글을 삭제하는 기능
-router.delete('/:id', function(req, res, next) {
-  Post.findOneAndRemove({_id: req.params.id}, function(err) {
-    if (err) {
-      return next(err);
-    }
-    res.redirect('/posts');
-  });
-});
 
 // 예약을 수락함
 router.put('/:id/agree', function(req, res, next) {
@@ -114,7 +77,7 @@ router.put('/:id/reject', function(req, res, next) {
   });
 });
 
-// 예약을 거절함
+// 예약을 취소함
 router.put('/:id/cancle', function(req, res, next) {
   Book.findOneAndRemove({_id: req.params.id}, function(err, book) {
     if (err) {
@@ -141,6 +104,11 @@ router.post('/:id', function(req, res, next) {
         if (err) {
             return next(err);
         }
+        if (req.body.dateFirst > req.body.dateLast) {
+          req.flash('danger', '예약 일 수가 맞지 않습니다');
+          return res.redirect('back');
+        }
+        
         var newBook = new Book({
             hostEmail: post.email,
             customerEmail: req.user.email,
@@ -156,7 +124,7 @@ router.post('/:id', function(req, res, next) {
             if (err) {
             return next(err);
             } else {
-            res.redirect('/posts');
+            res.redirect('/books/bookList');
             }
         });
     });

@@ -76,9 +76,10 @@ router.put('/:id', function(req, res, next) {
     }
     post.title = req.body.title;
     post.content = req.body.content;
-    post.city = req.body.city;
+    post.sido = req.body.sido;
     post.address = req.body.address;
     post.address2 = req.body.address2;
+    post.postcode = req.body.postcode;
     post.rule = req.body.rule;
     post.infra = req.body.infra;
     post.pay = req.body.pay;
@@ -100,10 +101,11 @@ router.post('/', function(req, res, next) {
         return next(err);
       }
       var newPost = new Post({
-        email: req.body.email,
+        email: req.user.email,
         title: req.body.title,
         content: req.body.content,
-        city: req.body.city,
+        postcode: req.body.postcode,
+        sido: req.body.sido,
         address: req.body.address,
         address2: req.body.address2,
         infra: req.body.infra,

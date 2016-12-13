@@ -5,26 +5,26 @@ block content
       h1.page-header 예약하기
 
     
-    form(action = "/books/#{post.id}" , method='POST')
-      .form-group
-        label(for='hostEmail') 호스트이메일
-        input.form-control(type='text', id='hostEmail', placeholder='호스트이메일', value=post.email)
-      .form-group
-        label(for='hostEmail') 예약자이메일
-        input.form-control(type='text', id='customerEmail', placeholder='예약자이메일', value=currentUser.email)
-      .form-group
-        label(for='dateFirst') 체크 인
-        input.form-control(type='date', id='dateFirst', name='dateFirst', placeholder='체크 인')
-      .form-group
-        label(for='dateLast') 체크 아웃
-        input.form-control(type='date', id='dateFirst', name='dateLast', placeholder='체크 아웃')
-      .form-group
-        label(for='people') 숙박 인원
-        input.form-control(type='number', id='people', placeholder='숙박 할 사람수를 입력해주세요')
-      div.form-actions
-        a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
-        | 
-        button.btn.btn-primary(type='submit') 완료
+      form(action = "/books/#{post.id}" , method='POST')
+        .form-group
+          label(for='hostEmail') 호스트이메일
+          input.form-control(type='text', id='hostEmail', placeholder='호스트이메일', value=post.email)
+        .form-group
+          label(for='hostEmail') 예약자이메일
+          input.form-control(type='text', id='customerEmail', placeholder='예약자이메일', value=currentUser.email)
+        .form-group
+          label(for='dateFirst') 체크 인
+          input.form-control(type='date', id='dateFirst', name='dateFirst', placeholder='체크 인')
+        .form-group
+          label(for='dateLast') 체크 아웃
+          input.form-control(type='date', id='dateFirst', name='dateLast', placeholder='체크 아웃')
+        .form-group
+          label(for='people') 숙박 인원
+          input.form-control(type='number', id='people', placeholder='숙박 할 사람수를 입력해주세요')
+        div.form-actions
+          a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+          | 
+          button.btn.btn-primary(type='submit') 완료
 
       
   script(type='text/javascript').

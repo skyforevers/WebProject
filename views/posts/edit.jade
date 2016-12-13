@@ -19,13 +19,11 @@ block content
         label(for='pay') 가격
         input.form-control(type='text', id='pay', name='pay', placeholder='Pay', value=post.pay)
       .form-group
-        label(for='city') 도시
-        input.form-control(type='text', id='city', name='city', placeholder='도시명', value=post.city)
-      .form-group
         label(for='address') 주소
         input.form-address(type='button', onclick='execDaumPostcode()', value='우편번호 찾기')
-        input.form-control(type='text', id='postcode', name='postcode', placeholder='우편번호' value=post.postcode)
-        input.form-control(type='text', id='address', name='address', placeholder='주소' value=post.address)
+        input.form-control(type='text', id='postcode', name='postcode', placeholder='우편번호', value=post.postcode)
+        input.form-control(type='text', id='address', name='address', placeholder='주소' ,value=post.address)
+        input.form-control(type='text', id='sido', name='sido', placeholder='도시', value=post.sido)
         input.form-control(type='text', id='address2', name='address2', placeholder='상세주소', value=post.address2) 
       .form-group
         label(for='infra') 편의 시설

@@ -9,7 +9,7 @@ block content
       span at #{moment(post.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
       | 
       | (조회수 #{post.read})
-    p 컨텐츠
+    p 숙소 설명
     p.well(style='white-space:pre;')= post.content
     p 편의 시설
     p.well(style='white=space:pre;')= post.infra
@@ -19,5 +19,7 @@ block content
     p.well(style='white-space:pre;')= post.postcode
     p 주소
     p.well(style='white-space:pre;')= post.address 
+    p 시
+    p.well(style='white-space:pre;')= post.sido
     
     a.btn.btn-default(href='/posts') 목록
