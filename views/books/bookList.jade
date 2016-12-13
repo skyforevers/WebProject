@@ -1,0 +1,80 @@
+extends ../layout
+
+block content
+  .container
+    h1.page-header 예약한 목록
+    
+    table.table.table-bordered
+      thead
+        tr
+          th 예약자 이메일
+          th 방이름
+          th 예약 기간
+          th 예약자 이름
+          th
+      tbody
+        if(currentUser)
+          each book in books
+            if(currentUser.email == book.customerEmail && book.status == "normal")
+              tr
+                td= book.customerEmail
+                td
+                  a(href='/books/#{book.id}/postshow')= book.title
+                td= moment(book.dateFirst).format('YYYY-MM-DD') + ' ~ ' + moment(book.dateLast).format('YYYY-MM-DD')
+                td= book.name
+                td
+                  a.btn.btn-xs.btn-default(href='/books/#{book.id}/cancle?_method=PUT') 예약 취소
+            
+               
+
+    h1.page-header 신청 목록
+    
+    table.table.table-bordered
+      thead
+        tr
+          th 예약자 이메일
+          th 방이름
+          th 예약 기간
+          th 예약자 이름
+          th
+      tbody
+        if(currentUser)
+          each book in books
+            if(currentUser.email == book.hostEmail && book.status == "normal")
+              tr
+                td= book.customerEmail
+                td
+                  a(href='/books/#{book.id}/postshow')= book.title
+                td= moment(book.dateFirst).format('YYYY-MM-DD') + ' ~ ' + moment(book.dateLast).format('YYYY-MM-DD')
+                td= book.name
+                td
+                  a.btn.btn-xs.btn-default(href='/books/#{book.id}/agree?_method=PUT') 수락
+                  | 
+                  a.btn.btn-xs.btn-default(href='/books/#{book.id}/reject?_method=PUT') 거절
+         
+            
+
+    h1.page-header 예약 완료 목록
+    
+    table.table.table-bordered
+      thead
+        tr
+          th 예약자 이메일
+          th 방이름
+          th 예약 기간
+          th 예약자 이름
+          th
+      tbody
+        if(currentUser)
+          each book in books
+            if(currentUser.email == book.customerEmail && book.status== "agree")
+              tr
+                td= book.customerEmail
+                td
+                  a(href='/books/#{book.id}/postshow')= book.title
+                td= moment(book.dateFirst).format('YYYY-MM-DD') + ' ~ ' + moment(book.dateLast).format('YYYY-MM-DD')
+                td= book.name
+                td
+                  a.btn.btn-xs.btn-default(href='/books/#{book.id}/cancle?_method=PUT') 예약 취소
+      
+

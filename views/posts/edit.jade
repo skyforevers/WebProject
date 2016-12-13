@@ -13,26 +13,31 @@ block content
         label(for='title') 숙소이름
         input.form-control(type='text', id='title', name='title', placeholder='숙소이름을 적어주세요', value=post.title)
       .form-group
-        label(for='content') Content
-        textarea.form-control(id='content', rows='10', name='content', placeholder='content here')= post.content
+        label(for='content') 숙소 설명
+        textarea.form-control(id='content', rows='10', name='content', placeholder='숙소에 대해 설명해주세요')= post.content
       .form-group
         label(for='pay') 가격
-        input.form-control(type='pay', id='pay', name='pay', placeholder='Pay', value=post.pay)
+        input.form-control(type='text', id='pay', name='pay', placeholder='Pay', value=post.pay)
       .form-group
         label(for='city') 도시
-        input.form-control(type='city', id='city', name='city', placeholder='도시명', value=post.city)
+        input.form-control(type='text', id='city', name='city', placeholder='도시명', value=post.city)
       .form-group
         label(for='address') 주소
-        input.form-control(type='address', id='address', name='address', placeholder='주소' value=post.address)
+        input.form-address(type='button', onclick='execDaumPostcode()', value='우편번호 찾기')
+        input.form-control(type='text', id='postcode', name='postcode', placeholder='우편번호' value=post.postcode)
+        input.form-control(type='text', id='address', name='address', placeholder='주소' value=post.address)
+        input.form-control(type='text', id='address2', name='address2', placeholder='상세주소', value=post.address2) 
       .form-group
         label(for='infra') 편의 시설
-        input.form-control(type='infra', id='infra', name='infra', placeholder='편의시설', value=post.infra)
+        input.form-control(type='text', id='infra', name='infra', placeholder='편의시설', value=post.infra)
       .form-group
         label(for='rule') 기본 사항
-        textarea.form-control(type='rule', rows='5', id='rule', name='rule', placeholder='지켜야 할 사항')= post.rule
+        textarea.form-control(type='text', rows='5', id='rule', name='rule', placeholder='지켜야 할 사항')= post.rule
       
       div.form-actions
         a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
         | 
         button.btn.btn-primary(type='submit') 완료
 
+      
+ script(type='text/javascript', src='/javascripts/address.js')

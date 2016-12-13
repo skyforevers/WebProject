@@ -9,7 +9,9 @@ var schema = new Schema({
   read: {type: Number, default: 0},
   city: {type: String, required: true},
   address: {type: String, required: true},
-  pay: {type: Number, default: 0, required: true},
+  postcode: {type: String, required: true},
+  address2: {type: String, required: true}, 
+  pay: {type: String, required: true},
   infra: {type: String, required: true},
   rule: {type: String, required: true}
 }, {  

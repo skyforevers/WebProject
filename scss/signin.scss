@@ -21,6 +21,14 @@
   .form-control:focus {
     z-index: 2;
   }
+  .form-address {
+    position: relative;
+    height: auto;
+    box-sizing: 5em;
+    padding: 10px;
+    font-size: 13px;
+    margin-left : 3em;
+  }
   input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;

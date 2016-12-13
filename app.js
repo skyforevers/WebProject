@@ -15,6 +15,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var routeAuth = require('./routes/auth');
 var posts = require('./routes/posts');
+var books = require('./routes/books');
 
 var app = express();
 
@@ -63,6 +64,7 @@ configAuth(passport);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/posts', posts);
+app.use('/books', books);
 routeAuth(app, passport);
 
 // catch 404 and forward to error handler

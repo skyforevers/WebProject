@@ -78,9 +78,11 @@ router.put('/:id', function(req, res, next) {
     post.content = req.body.content;
     post.city = req.body.city;
     post.address = req.body.address;
+    post.address2 = req.body.address2;
     post.rule = req.body.rule;
     post.infra = req.body.infra;
-    post.rule = req.body.rule;
+    post.pay = req.body.pay;
+    
     post.save(function(err) {
       if (err) {
         return next(err);
@@ -98,11 +100,12 @@ router.post('/', function(req, res, next) {
         return next(err);
       }
       var newPost = new Post({
-        email: req.user.email,
+        email: req.body.email,
         title: req.body.title,
         content: req.body.content,
         city: req.body.city,
         address: req.body.address,
+        address2: req.body.address2,
         infra: req.body.infra,
         rule: req.body.rule,
         pay: req.body.pay
